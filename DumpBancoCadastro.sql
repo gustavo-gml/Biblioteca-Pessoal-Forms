@@ -54,7 +54,14 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listaBandas`()
 BEGIN
-     Select * from bandas;
+     SELECT 
+        b.idbandas, 
+        b.nome, 
+        b.ranking, 
+        g.genero
+    FROM bandas b
+    INNER JOIN generos g 
+        ON g.idgenero = b.fk_genero;
 END ;;
 DELIMITER ;
 
