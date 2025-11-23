@@ -83,6 +83,36 @@ namespace SistemaCadastro
 
         private void BtnConfirmaCadastro_Click(object sender, EventArgs e)
         {
+            ConectaBanco conecta = new ConectaBanco();
+            Livro novoLivro = new Livro();
+            novoLivro.Titulo = txtTitulo.Text;
+            novoLivro.Autor = txtAutor.Text;
+            novoLivro.Genero = 1;
+            novoLivro.AnoPublicacao = Convert.ToInt32(txtPublicacao.Text);
+            conecta.insereLivro(novoLivro);
+            bool retorno = conecta.insereLivro(novoLivro);
+            if (retorno)
+            {
+                MessageBox.Show(conecta.mensagem);
+            }
+            else
+            {
+                MessageBox.Show(conecta.mensagem);
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAutor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtranking_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
