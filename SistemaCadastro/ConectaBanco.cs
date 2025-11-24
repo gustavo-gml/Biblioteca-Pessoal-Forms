@@ -11,7 +11,7 @@ namespace SistemaCadastro
     internal class ConectaBanco
     {
         MySqlConnection conexao = new MySqlConnection("server=localhost;user id=root;password=1234; database=cadastro_livros");
-        public string mensagem;
+        public string mensagem="sucesso";
 
         public bool insereLivro(Livro novoLivro)
         {
@@ -38,6 +38,61 @@ namespace SistemaCadastro
             {
                 if (conexao.State == ConnectionState.Open) conexao.Close();
             }
-        }
-    }
+
+        }//fim do insereLivro
+
+
+        public DataTable listaGeneros()
+        {
+            // comentario
+            MySqlCommand cmd = new MySqlCommand("sp_listaGeneros", conexao);
+            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                conexao.Open();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable tabela = new DataTable();
+                da.Fill(tabela);
+                return tabela;
+            }// fim try
+            catch (MySqlException e)
+            {
+                mensagem = "Erro:" + e.Message;
+                return null;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+
+        }// fim lista_generos
+
+        // Metodo no conecta Banco
+
+        public DataTable listaLivros()
+        {
+            MySqlCommand cmd = new MySqlCommand("sp_listaLivros", conexao);
+            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                conexao.Open();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable tabela = new DataTable();
+                da.Fill(tabela);
+                return tabela;
+            }// fim try
+            catch (MySqlException e)
+            {
+                mensagem = "Erro:" + e.Message;
+                return null;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+
+        }// fim lista_bandas
+
+
+    }//fim da classe
 }

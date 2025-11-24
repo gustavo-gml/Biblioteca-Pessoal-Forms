@@ -48,7 +48,25 @@ namespace SistemaCadastro
 
         private void Sistema_Load(object sender, EventArgs e)
         {
-         
+            listaCBGeneros();
+            listaLivros();
+        }
+
+        void listaLivros()
+        {
+            ConectaBanco con = new ConectaBanco();
+            dgLivros.DataSource = con.listaLivros(); 
+        }
+
+        public void listaCBGeneros()
+        {
+            ConectaBanco conecta = new ConectaBanco();
+            DataTable tabelaDados = new DataTable();
+            tabelaDados = conecta.listaGeneros();
+
+            cbGenero.DataSource = tabelaDados;
+            cbGenero.DisplayMember = "tipo";
+            cbGenero.ValueMember = "id";
         }
 
 
@@ -56,7 +74,8 @@ namespace SistemaCadastro
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
-  
+            (dgLivros.DataSource as DataTable).DefaultView.RowFilter =
+            string.Format("titulo like '{0}%'", txtBusca.Text);
         }
 
         private void btnRemoveBanda_Click(object sender, EventArgs e)
@@ -81,23 +100,35 @@ namespace SistemaCadastro
           
         }
 
+        void limpaCampos()
+        {
+            txtTitulo.Clear();
+            cbGenero.Text = "";
+            txtAutor.Clear();
+            txtPublicacao.Clear();
+
+        }
+
         private void BtnConfirmaCadastro_Click(object sender, EventArgs e)
         {
             ConectaBanco conecta = new ConectaBanco();
+
             Livro novoLivro = new Livro();
             novoLivro.Titulo = txtTitulo.Text;
             novoLivro.Autor = txtAutor.Text;
-            novoLivro.Genero = 1;
+            novoLivro.Genero = Convert.ToInt32(cbGenero.SelectedValue.ToString());
             novoLivro.AnoPublicacao = Convert.ToInt32(txtPublicacao.Text);
-            conecta.insereLivro(novoLivro);
+
             bool retorno = conecta.insereLivro(novoLivro);
             if (retorno)
             {
                 MessageBox.Show(conecta.mensagem);
+                limpaCampos();
             }
             else
             {
                 MessageBox.Show(conecta.mensagem);
+
             }
         }
 
@@ -112,6 +143,11 @@ namespace SistemaCadastro
         }
 
         private void txtranking_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgBandas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

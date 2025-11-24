@@ -55,7 +55,7 @@
             this.btnRemoveBanda = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBusca = new System.Windows.Forms.TextBox();
-            this.dgBandas = new System.Windows.Forms.DataGridView();
+            this.dgLivros = new System.Windows.Forms.DataGridView();
             this.tabAlterar = new System.Windows.Forms.TabPage();
             this.cbAlteraGenero = new System.Windows.Forms.ComboBox();
             this.txtAlteraRanking = new System.Windows.Forms.TextBox();
@@ -75,7 +75,7 @@
             this.tabControl1.SuspendLayout();
             this.tabCadastrar.SuspendLayout();
             this.tabBuscar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBandas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLivros)).BeginInit();
             this.tabAlterar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -354,7 +354,7 @@
             this.tabBuscar.Controls.Add(this.btnRemoveBanda);
             this.tabBuscar.Controls.Add(this.label5);
             this.tabBuscar.Controls.Add(this.txtBusca);
-            this.tabBuscar.Controls.Add(this.dgBandas);
+            this.tabBuscar.Controls.Add(this.dgLivros);
             this.tabBuscar.Location = new System.Drawing.Point(4, 30);
             this.tabBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.tabBuscar.Name = "tabBuscar";
@@ -420,19 +420,20 @@
             this.txtBusca.TabIndex = 1;
             this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
             // 
-            // dgBandas
+            // dgLivros
             // 
-            this.dgBandas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgBandas.BackgroundColor = System.Drawing.Color.White;
-            this.dgBandas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgBandas.Location = new System.Drawing.Point(56, 68);
-            this.dgBandas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgBandas.Name = "dgBandas";
-            this.dgBandas.ReadOnly = true;
-            this.dgBandas.RowHeadersWidth = 51;
-            this.dgBandas.RowTemplate.Height = 29;
-            this.dgBandas.Size = new System.Drawing.Size(797, 233);
-            this.dgBandas.TabIndex = 0;
+            this.dgLivros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgLivros.BackgroundColor = System.Drawing.Color.White;
+            this.dgLivros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgLivros.Location = new System.Drawing.Point(56, 68);
+            this.dgLivros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgLivros.Name = "dgLivros";
+            this.dgLivros.ReadOnly = true;
+            this.dgLivros.RowHeadersWidth = 51;
+            this.dgLivros.RowTemplate.Height = 29;
+            this.dgLivros.Size = new System.Drawing.Size(797, 233);
+            this.dgLivros.TabIndex = 0;
+            this.dgLivros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgBandas_CellContentClick);
             // 
             // tabAlterar
             // 
@@ -612,7 +613,7 @@
             this.tabCadastrar.PerformLayout();
             this.tabBuscar.ResumeLayout(false);
             this.tabBuscar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBandas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLivros)).EndInit();
             this.tabAlterar.ResumeLayout(false);
             this.tabAlterar.PerformLayout();
             this.ResumeLayout(false);
@@ -642,7 +643,7 @@
         private System.Windows.Forms.Panel marcador;
         private System.Windows.Forms.TextBox txtPublicacao;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dgBandas;
+        private System.Windows.Forms.DataGridView dgLivros;
         private System.Windows.Forms.Label lblMensagem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtBusca;
