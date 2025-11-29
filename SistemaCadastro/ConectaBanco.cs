@@ -16,7 +16,7 @@ namespace SistemaCadastro
         /*"Server=mysql-3ea635ce-gustavomartinsdilima-c233.k.aivencloud.com;Port=18263;Database=defaultdb;Uid=avnadmin;Pwd=AVNS_P3XmOYbnN74aPM22Ece; SslMode=Required;"*/
 
         /*String nuvem "Server=mysql-3c994b13-gustavomartinslim06-ced0.j.aivencloud.com;Port=19122;Database=defaultdb;Uid=avnadmin;Pwd=AVNS_Be2RLD9TBg9YpFRXS2s;SslMode=Required;"**/
-        MySqlConnection conexao = new MySqlConnection("Server=mysql-3c994b13-gustavomartinslim06-ced0.j.aivencloud.com;Port=19122;Database=defaultdb;Uid=avnadmin;Pwd=AVNS_Be2RLD9TBg9YpFRXS2s;SslMode=Required;");
+        MySqlConnection conexao = new MySqlConnection();
         public string mensagem="sucesso";
 
         public bool insereLivro(Livro novoLivro)
